@@ -15,10 +15,22 @@ jobs:
       uses: actions/checkout@v4
     - name: Compile
       run: make
+    - name: Prepare deploy folder
+      run: mkdir -p deploy
     - name: Move PDF to deploy folder
+      run: cp documents/*.pdf deploy/
+    - name: Prpare simple html
       run: |
-        mkdir deploy
-        cp documents/*.pdf deploy/
+        echo '<!DOCTYPE html>' > deploy/index.html
+        echo '<html lang="en">' >> deploy/index.html
+        echo '<head><meta charset="UTF-8"><title>Documents</title></head>' >> deploy/index.html
+        echo '<body>' >> deploy/index.html
+        echo '<h1>Documents</h1>' >> deploy/index.html
+        for file in deploy/*.pdf; do
+          filename=$(basename "$file")
+          echo "<a href=\"$filename\">$filename</a><br>" >> deploy/index.html
+        done
+        echo '</body></html>' >> deploy/index.html
     - name: Publish to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
