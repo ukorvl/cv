@@ -1,9 +1,11 @@
 # Agents guide
 
 ## Project overview
-This is a project to maintain my CV and cover letter in a structured format using LaTeX. The project includes multiple versions of the CV (frontend, fullstack) and a cover letter, all formatted using the Awesome-CV LaTeX class.
+
+This is a project to maintain frontend / fullstack engineer CV and cover letter in a structured format using LaTeX. The project includes multiple versions of the CV (frontend, fullstack) and a cover letter, all formatted using the Awesome-CV LaTeX class.
 
 ## Core working rules
+
 - Follow unquestioningly the "only facts, no inventions" rule. Do not add any information that is not present in the source files or provided by the user. If you are unsure about a fact, ask for clarification instead of making assumptions.
 - Ensure the project successfully compiles to PDF without errors by running `make` or the appropriate LaTeX build command.
 - Maintain a clean and organized directory structure, separating content, documents, and other files.
