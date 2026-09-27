@@ -72,6 +72,11 @@
 \RequirePackage[quiet]{fontspec}
 % To support LaTeX quoting style
 \defaultfontfeatures{Ligatures=TeX}
+% Preserve interword spaces and source text for PDF copy/paste and ATS parsing.
+\ifxetex
+  \XeTeXinterwordspaceshaping=2
+  \XeTeXgenerateactualtext=1
+\fi
 % Needed to manage math fonts
 \RequirePackage{unicode-math}
 % Needed to use icons from font-awesome
@@ -754,6 +759,8 @@
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
     \setlength{\parskip}{0pt}
+    % Allow long bullets to wrap without overflowing the text area.
+    \setlength{\emergencystretch}{1em}
     \renewcommand{\labelitemi}{\bullet}
 }{%
   \end{itemize}
